@@ -31,31 +31,44 @@ figure.image-display
 
   * [Showing component properties with interpolation](#interpolation)
   
-  * [挿入によりコンポーネントプロパティを表示する](#interpolation)
+  * [補間によるコンポーネントプロパティの表示](#interpolation)
 
   * [Showing !{_an} !{_array} property with NgFor](#ngFor)
   
-  * [NgForで配列の要素を表示する](#ngFor)
+  * [NgForによる配列の要素の表示](#ngFor)
 
   * [Conditional display with NgIf](#ngIf)
 
-  * [NgIfで条件により表示を切り替える](#ngIf)
+  * [NgIfによる条件付き表示](#ngIf)
 
 .l-sub-section
   :marked
     The <live-example></live-example> demonstrates all of the syntax and code
     snippets described in this chapter.
 
+    <live-example></live-example>に、この章に書かれている全ての文法とコードスニペットの
+    デモがあります。
+
 .l-main-section#interpolation
 :marked
   ## Showing component properties with interpolation
+
+  ## 補間によるコンポーネントプロパティの表示
+
   The easiest way to display a component property
   is to bind the property name through interpolation.
   With interpolation, we put the property name in the view template, enclosed in double curly braces: `{{myHero}}`.
 
+  最も簡単にコンポーネントプロパティを表示する方法は補間によりプロパティの名前を紐付けることです。
+  補間では, ビューテンプレート内にプロパティの名前を記述し、次のように二重波括弧で囲みます。: `{{myHero}}`.
+
   Let's build a small illustrative example together.
 
+  それでは簡単な実例を作ってみましょう。
+
   Create a new project folder (<ngio-ex path="displaying-data"></ngio-ex>) and follow the steps in the [QuickStart](../quickstart.html).
+
+  新しいプロジェクトフォルダを作成し (<ngio-ex path="displaying-data"></ngio-ex>) [QuickStart](../quickstart.html)に従ってください。
 
 block quickstart-repo
   include ../_quickstart_repo
@@ -65,13 +78,21 @@ block quickstart-repo
   changing the template and the body of the component.
   When we're done, it should look like this:
 
+  それからコンポーネントのテンプレートと本体を入れ替え<ngio-ex path="app.component.ts"></ngio-ex>を 
+  変更します。
+  それらが終わると、このようになるはずです。:
+
 +makeExample('app/app.component.1.ts')
 
 :marked
   We added two properties to the formerly empty component: `title` and `myHero`.
 
+  先程空だったコンポーネントに2つのプロパティ、 `title` と `myHero`を追加しました。
+
   Our revised template displays the two component properties using double curly brace
   interpolation:
+
+  変更したテンプレートは二重波括弧補間により2つのコンポーネントプロパティを表示します。
 
 +makeExcerpt('app/app.component.1.ts', 'template', '')
 
@@ -83,6 +104,8 @@ block quickstart-repo
       quote (`'`) &mdash; has many nice features. The feature we're exploiting here
       is the ability to compose the string over several lines, which makes for
       much more readable HTML.
+
+      
 
 :marked
   Angular automatically pulls the value of the `title` and `myHero` properties from the component and
