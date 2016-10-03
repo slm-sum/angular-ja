@@ -105,17 +105,17 @@ block quickstart-repo
       is the ability to compose the string over several lines, which makes for
       much more readable HTML.
 
-      上記のテンプレートはECMAScript 2015のbacktick  (<code>\`</code>)内に複数行で記載されています。
-      single quote (`'`) &mdash;とは違う文字であるbacktick (<code>\`</code>) &mdash;には多くの役立つ機能があります。
-      The feature we're exploiting here
-      is the ability to compose the string over several lines, which makes for
-      much more readable HTML.
-      
+      上記のテンプレートはECMAScript 2015のバッククオート  (<code>\`</code>)内に複数行で記載されています。
+      クオート (`'`) &mdash;とは違う文字であるクオート (<code>\`</code>) &mdash;には多くの役立つ機能があります。
+      ここで用いている機能は文字列を複数行に渡って記述できる能力で、これにより読みやすいHTMLを記述することができます。
 
 :marked
   Angular automatically pulls the value of the `title` and `myHero` properties from the component and
   inserts those values into the browser. Angular updates the display
   when these properties change.
+
+  Angularは`title`と`myHero`のプロパティの値をコンポーネントから取得しブラウザに挿入します。
+  値が変更された場合Angularは表示を更新します。
 
 .l-sub-section
   :marked
@@ -124,12 +124,22 @@ block quickstart-repo
     We don't have those in this sample.
     But then the properties aren't changing on their own either. For the moment we must operate on faith.
 
+    より正確には、再表示はキー入力、タイマーの完了、または非同期の`XHR`の応答のようなビューに関連する
+    ある種の非同期のイベントの後に発生します。
+    このサンプルではそれらは起きません。とりあえずは信用して操作しなければなりません。
+
 :marked
   Notice that we haven't called **new** to create an instance of the `AppComponent` class.
   Angular is creating an instance for us. How?
 
+  `AppComponent`クラスのインスタンスを作成するために**new**を読んでいないことに注意してください。
+  それでもAngularはインスタンスを作成してくれます。どうするのでしょうか？
+
   Notice the CSS `selector` in the `@Component` !{_decorator} that specifies an element named `my-app`.
   Remember back in [QuickStart](../quickstart.html) that we added the `<my-app>` element to the body of our `index.html` file:
+
+  `@Component` !{_decorator}で要素の名前を`my-app`と定めているCSSセレクタに注意してください。
+  [QuickStart](../quickstart.html)でindex.htmlのbodyに`<my-app>`要素を追加したことを思い出してください。
 
 +makeExcerpt('index.html', 'body')
 
