@@ -80,7 +80,7 @@ block quickstart-repo
 
   それからコンポーネントのテンプレートと本体を入れ替え<ngio-ex path="app.component.ts"></ngio-ex>を 
   変更します。
-  それらが終わるとこのようになるはずです。:
+  それらが終わると次のようになるはずです。:
 
 +makeExample('app/app.component.1.ts')
 
@@ -107,7 +107,7 @@ block quickstart-repo
 
       上記のテンプレートはECMAScript 2015のバッククオート  (<code>\`</code>)内に複数行で記載されています。
       クオート (`'`) &mdash;とは違う文字であるクオート (<code>\`</code>) &mdash;には多くの役立つ機能があります。
-      ここで用いている機能は文字列を複数行に渡って記述できる能力で、これにより読みやすいHTMLを記述することができます。
+      ここで用いている機能は文字列を複数行に渡って記述できる機能で、これにより読みやすいHTMLを記述することができます。
 
 :marked
   Angular automatically pulls the value of the `title` and `myHero` properties from the component and
@@ -193,7 +193,9 @@ figure.image-display
 
 +ifDocsFor('ts')
   :marked
-    ## Constructor or variable initialization?
+    ## Constructor or variable initialization?」
+
+    ## コンストラクタか？変数代入か？
 
     We initialized our component properties using variable assignment.
     This is a wonderfully concise and compact technique.
@@ -268,7 +270,7 @@ figure.image-display
   to the item (the hero) in the current iteration. Angular uses that variable as the
   context for the interpolation in the double curly braces.
 
-  Angularは一覧のアイテムに対応した`<li>`を複製し、`hero`の変数をその対応するアイテムに設定します。
+  Angularは一覧の項目に対応した`<li>`を複製し、`hero`の変数をその対応する項目に設定します。
   Angularはその変数を二重波括弧補間のコンテキストで扱います。
 
 .l-sub-section
@@ -278,7 +280,7 @@ figure.image-display
     object.
 
     私達は`ngFor`に表示したい配列を与えました。実際、`ngFor`にあらゆる
-    [イテラブルな](!{_iterableUrl})オブジェクトに対してアイテムを繰り返すことができます。
+    [イテラブルな](!{_iterableUrl})オブジェクトに対して項目を繰り返すことができます。
     
 :marked
   Now the heroes appear in an unordered list.
@@ -303,7 +305,7 @@ figure.image-display
   At the moment, we're binding to !{_an} !{_array} of strings. We do that occasionally in real applications, but
   most of the time we're binding to more specialized objects.
 
-  そこでは文字列の配列を紐づけています。稀に実際のアプリケーションでもそのようにしますが、多くの場合はより特化したオブジェクトを紐づける。
+  そこでは文字列の配列を紐づけています。稀に実際のアプリケーションでもそのようにしますが、多くの場合はより特化したオブジェクトを紐づけます。
 
   Let's turn our !{_array} of hero names into !{_an} !{_array} of `Hero` objects. For that we'll need a `Hero` class.
 
@@ -334,21 +336,23 @@ block hero-class
 
   :marked
     That brief syntax does a lot:
-    * Declares a constructor parameter and its type
-    * Declares a public property of the same name
-    * Initializes that property with the corresponding argument when we "new" an instance of the class
 
     この簡単な文法が多くのことを行なっています
+
+    * Declares a constructor parameter and its type
     * コンストラクタのパラメータとその型を宣言します
+    * Declares a public property of the same name
     * 同じ名前のパブリックプロパティを宣言します
+    * Initializes that property with the corresponding argument when we "new" an instance of the class
     * クラスのインスタンスをnewするときに対応する引数でプロパティを初期化します。
 
 .l-main-section
 :marked
   ## Using the Hero class
-  Let's make the `heroes` property in our component return !{_an} !{_array} of these `Hero` objects.
+  ## Heroクラスを使う  
 
-  ## Heroクラスを使う
+  Let's make the `heroes` property in our component return !{_an} !{_array} of these `Hero` objects.
+  
   それでは私達のコンポーネントの`heroes`プロパティを`Hero`のオブジェクトの配列を返すようにしてみましょう。
 
 +makeExcerpt('app/app.component.3.ts', 'heroes')
@@ -380,7 +384,7 @@ block hero-class
 
   In our example, we'd like to display a message if we have a large number of heroes, say, more than 3.
 
-  私達の例では、3以上のたくさんのヒーローがいる場合にメッセージを表示します。
+  私達の例では、3個以上のたくさんのヒーローがいる場合にメッセージを表示します。
 
   The Angular `ngIf` directive inserts or removes an element based on a !{_boolean} condition.
   We can see it in action by adding the following paragraph at the bottom of the template:
@@ -396,7 +400,7 @@ block hero-class
     Learn more about this and `ngIf` in the [Template Syntax](./template-syntax.html#ngIf) chapter.
 
     `*ngIf`を(\*)で始めることを忘れないでください。文法上重要なことです。
-    このことと`ngFor`については[テンプレート文法](./template-syntax.html#ngIf) でより学べます。
+    このことと`ngIf`については[テンプレート文法](./template-syntax.html#ngIf) でより学べます。
 
 :marked
   The [template expression](./template-syntax.html#template-expressions) inside the double quotes
@@ -424,16 +428,29 @@ block hero-class
   Go back into <ngio-ex path="app.component.ts"></ngio-ex> and delete or comment out one of the elements from the hero !{_array}.
   The browser should refresh automatically and the message should disappear.
 
+  試してみてください。配列には4つの項目があるので、メッセージが表示されるはずです。
+  <ngio-ex path="app.component.ts"></ngio-ex>に戻ってヒーローの配列の要素を1つ削除するかコメントアウトしてください。
+  ブラウザが自動的に更新されメッセージが消えるはずです。
 .l-main-section
 :marked
   ## Summary
+  ## まとめ
+
   Now we know how to use:
+  
+  これまでに次の使い方を学びました:
   - **Interpolation** with double curly braces to display a component property
+  - **2重波括弧補間**によるコンポーネントプロパティの表示
   - **ngFor** to display !{_an} !{_array} of items
+  - 配列を表示するための**ngFor**
   - A !{_Lang} class to shape the **model data** for our component and display properties of that model
+  - 私達のコンポーネントの**モデルデータ**を象る!{_Lang}クラスとモデルのプロパティの表示
   - **ngIf** to conditionally display a chunk of HTML based on a boolean expression
+  - 真偽表現に基づく**ngIf**を用いたHTMLのかたまりの条件付き表示
 
   Here's our final code:
+
+  最終的にコードは次のようになります。
 
 block final-code
   +makeTabs(`displaying-data/ts/app/app.component.ts,
