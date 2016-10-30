@@ -262,18 +262,28 @@ figure.image-display
   Notice the `hero` in the `ngFor` double-quoted instruction;
   it is an example of a [template input variable](./template-syntax.html#ngForMicrosyntax).
 
+  `ngFor`の`hero`がダブルクオートで囲まれていることに注意してください。
 
   Angular duplicates the `<li>` for each item in the list, setting the `hero` variable
   to the item (the hero) in the current iteration. Angular uses that variable as the
   context for the interpolation in the double curly braces.
+
+  Angularは一覧のアイテムに対応した`<li>`を複製し、`hero`の変数をその対応するアイテムに設定します。
+  Angularはその変数を二重波括弧補間のコンテキストで扱います。
 
 .l-sub-section
   :marked
     We happened to give `ngFor` !{_an} !{_array} to display.
     In fact, `ngFor` can repeat items for any [iterable](!{_iterableUrl})
     object.
+
+    私達は`ngFor`に表示したい配列を与えました。実際、`ngFor`にあらゆる
+    [イテラブルな](!{_iterableUrl})オブジェクトに対してアイテムを繰り返すことができます。
+    
 :marked
   Now the heroes appear in an unordered list.
+
+  そしてヒーロー達が順序無しリストに現れました。
 
 figure.image-display
   img(src="/resources/images/devguide/displaying-data/hero-names-list.png" alt="After ngfor")
@@ -282,16 +292,26 @@ figure.image-display
 :marked
   ## Creating a class for the data
 
+  ## データ向けのクラスを作成する
+
   We are defining our data directly inside our component.
   That's fine for a demo but certainly isn't a best practice. It's not even a good practice.
   Although we won't do anything about that in this chapter, we'll make a mental note to fix this down the road.
 
+  現在私達はコンポーネントの内部に直接データを定義しています。
+
   At the moment, we're binding to !{_an} !{_array} of strings. We do that occasionally in real applications, but
   most of the time we're binding to more specialized objects.
 
+  そこでは文字列の配列を紐づけています。稀に実際のアプリケーションでもそのようにしますが、多くの場合はより特化したオブジェクトを紐づける。
+
   Let's turn our !{_array} of hero names into !{_an} !{_array} of `Hero` objects. For that we'll need a `Hero` class.
 
+  それではヒーローの名前の配列を`Hero`オブジェクトの配列に変えましょう。そのためには`Hero`クラスが必要です。
+
   Create a new file in the `!{_appDir}` folder called  <ngio-ex path="hero.ts"></ngio-ex> with the following code:
+
+  新しいファイルを`!{_appDir}`フォルダに<ngio-ex path="hero.ts"></ngio-ex>として作成し、次のコードを記述します。
   
 +makeExcerpt('app/hero.ts')
 
@@ -299,10 +319,16 @@ block hero-class
   :marked
     We've defined a class with a constructor and two properties: `id` and `name`.
 
+    コンストラクタと`id`と`name`という2つのプロパティを持つクラスを定義しました。
+
     It might not look like we have properties, but we do. We're taking
     advantage of a TypeScript shortcut in our declaration of the constructor parameters.
 
+    プロパティがあるようには見えませんが、あります。コンストラクタのパラメータの宣言でTypescriptのショートカットの利点を用いています。
+
     Consider the first parameter:
+
+    最初のパラメータを見てください。
 
   +makeExcerpt('app/hero.ts ()', 'id')
 
@@ -312,10 +338,18 @@ block hero-class
     * Declares a public property of the same name
     * Initializes that property with the corresponding argument when we "new" an instance of the class
 
+    この簡単な文法が多くのことを行なっています
+    * コンストラクタのパラメータとその型を宣言します
+    * 同じ名前のパブリックプロパティを宣言します
+    * クラスのインスタンスをnewするときに対応する引数でプロパティを初期化します。
+
 .l-main-section
 :marked
   ## Using the Hero class
   Let's make the `heroes` property in our component return !{_an} !{_array} of these `Hero` objects.
+
+  ## Heroクラスを使う
+  それでは私達のコンポーネントの`heroes`プロパティを`Hero`のオブジェクトの配列を返すようにしてみましょう。
 
 +makeExcerpt('app/app.component.3.ts', 'heroes')
 
@@ -324,21 +358,35 @@ block hero-class
   At the moment it displays the hero's `id` and `name`.
   Let's fix that so we display only the hero's `name` property.
 
+  テンプレートを更新しなければなりません。現在はヒーローの`id`と`name`を表示しています。
+  ヒーローの`name`プロパティだけを表示するように直しましょう。
+
 +makeExcerpt('app/app.component.3.ts', 'template')
 
 :marked
   Our display looks the same, but now we know much better what a hero really is.
 
+  表示は同じですが、ヒーローが何かよりわかるようになりました。
+
 .l-main-section#ngIf
 :marked
   ## Conditional display with NgIf
 
+  ## NgIfによる条件付き表示
+
   Sometimes an app needs to display a view or a portion of a view only under specific circumstances.
+
+  時にアプリケーションは特定の条件の場合のみビューやビューの一部を表示する必要があります。
 
   In our example, we'd like to display a message if we have a large number of heroes, say, more than 3.
 
+  私達の例では、3以上のたくさんのヒーローがいる場合にメッセージを表示します。
+
   The Angular `ngIf` directive inserts or removes an element based on a !{_boolean} condition.
   We can see it in action by adding the following paragraph at the bottom of the template:
+
+  Angularの`ngIf`ディレクティブは真偽条件に基づき要素を挿入したり削除します。
+  次のパラグラフをテンプレートの最後に追加する動作で確認することができます。
 
 +makeExcerpt('app/app.component.ts', 'message')
 
@@ -347,17 +395,29 @@ block hero-class
     Don't forget the leading asterisk (\*) in `*ngIf`. It is an essential part of the syntax.
     Learn more about this and `ngIf` in the [Template Syntax](./template-syntax.html#ngIf) chapter.
 
+    `*ngIf`を(\*)で始めることを忘れないでください。文法上重要なことです。
+    このことと`ngFor`については[テンプレート文法](./template-syntax.html#ngIf) でより学べます。
+
 :marked
   The [template expression](./template-syntax.html#template-expressions) inside the double quotes
   looks much like !{_Lang}, and it _is_ much like !{_Lang}.
   When the component's list of heroes has more than 3 items, Angular adds the paragraph to the DOM and the message appears.
   If there are 3 or fewer items, Angular omits the paragraph, so no message appears.
 
+  ダブルクオート内部の[テンプレート表現](./template-syntax.html#template-expressions)は!{_Lang}のようで、
+  やはり!{_Lang}らしいです。
+  コンポーネントのヒーローの一覧が3項目より大きい場合、AngularはDOMにパラグラフを追加しメッセージを表示します。
+  3やそれより少ない項目しかない場合、Angularはパラグラフを削除し、メッセージを表示しません。
+
 .alert.is-helpful
   :marked
     Angular isn't showing and hiding the message. It is adding and removing the paragraph element from the DOM.
     That hardly matters here. But it would matter a great deal, from a performance perspective, if
     we were conditionally including or excluding a big chunk of HTML with many data bindings.
+
+    Angularはメッセージを表示したり隠したりしません。パラグラフの要素をDOMに追加したり削除したりします。
+    このことはここではそれほど重要ではありません。しかし性能の観点から見ると、条件により多くのデータが紐づけられた
+    大きなHTMLのかたまりを加えたり外したりする場合にはとても重要なことでしょう。
 
 :marked
   Try it out. Because the !{_array} has four items, the message should appear.
