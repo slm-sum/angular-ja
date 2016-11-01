@@ -106,7 +106,7 @@ block quickstart-repo
       much more readable HTML.
 
       上記のテンプレートはECMAScript 2015のバッククオート  (<code>\`</code>)内に複数行で記載されています。
-      クオート (`'`) &mdash;とは違う文字であるクオート (<code>\`</code>) &mdash;には多くの役立つ機能があります。
+      クオート (`'`) &mdash;とは違う文字であるバッククオート (<code>\`</code>) &mdash;には多くの役立つ機能があります。
       ここで用いている機能は文字列を複数行に渡って記述できる機能で、これにより読みやすいHTMLを記述することができます。
 
 :marked
@@ -125,14 +125,14 @@ block quickstart-repo
     But then the properties aren't changing on their own either. For the moment we must operate on faith.
 
     より正確には、再表示はキー入力、タイマーの完了、または非同期の`XHR`の応答のようなビューに関連する
-    ある種の非同期のイベントの後に発生します。
-    このサンプルではそれらは起きません。とりあえずは信用して操作しなければなりません。
+    数種類の非同期イベントの後に発生します。
+    プロパティはそれ自体では変わりません。とりあえずは信用して操作しなければなりません。
 
 :marked
   Notice that we haven't called **new** to create an instance of the `AppComponent` class.
   Angular is creating an instance for us. How?
 
-  `AppComponent`クラスのインスタンスを作成するために**new**を読んでいないことに注意してください。
+  `AppComponent`クラスのインスタンスを作成するために**new**を呼んでいないことに注意してください。
   それでもAngularはインスタンスを作成してくれます。どうするのでしょうか？
 
   Notice the CSS `selector` in the `@Component` !{_decorator} that specifies an element named `my-app`.
@@ -205,7 +205,7 @@ figure.image-display
 
     Some folks prefer to declare the properties and initialize them within a constructor like this:
 
-    一方次のようにプロパティを宣言しそれらをコンストラクタで初期化する人もいます。
+    一方次のようにプロパティを宣言しそれらをコンストラクタで初期化することを好む人もいます。
   +makeExcerpt('app/app-ctor.component.ts', 'class')
 
   :marked
@@ -326,7 +326,7 @@ block hero-class
     It might not look like we have properties, but we do. We're taking
     advantage of a TypeScript shortcut in our declaration of the constructor parameters.
 
-    プロパティがあるようには見えませんが、あります。コンストラクタのパラメータの宣言でTypescriptのショートカットの利点を用いています。
+    プロパティがあるようには見えませんが、あるのです。コンストラクタのパラメータの宣言でTypescriptのショートカットの利点を用いています。
 
     Consider the first parameter:
 
